@@ -12,6 +12,7 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -69,25 +70,23 @@ public class MainActivity extends AppCompatActivity {
                 textViewTitle.setText("Title: " + mBookList.get(position).getTitle());
                 textViewAuthor.setText("Author: " + mBookList.get(position).getAuthor());
 
-             //  View.OnClickListener listener = new View.OnClickListener() {
-             //      @Override
-             //      public void onClick(View view) {
-             //          textViewAuthor.setTextColor(Color.RED);
-             //          textViewTitle.setTextColor(Color.RED);
-             //        //  mBookAdapter.notifyDataSetChanged();
+                  View.OnClickListener listener = new View.OnClickListener() {
+                      @Override
+                      public void onClick(View view) {
+                          textViewAuthor.setTextColor(Color.RED);
+                          textViewTitle.setTextColor(Color.RED);
+                          Toast.makeText(MainActivity.this, "Read!", Toast.LENGTH_SHORT).show();
 
-             //      }
-             //  };
 
-             //  mListView.setOnClickListener(listener);
-
+                      }
+                  };
+                  view.setOnClickListener(listener);
                 return view;
             }
         };
         //
 
         //TODO: Set the ListView's adapter
-        ListView listView = (ListView) findViewById(R.id.listview);
         mListView.setAdapter(mBookAdapter);
     }
 
